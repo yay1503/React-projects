@@ -1,14 +1,15 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
 import {useDispatch} from "react-redux";
-import authservice from "./appwrite/auth";
+import authService from "./appwrite/Auth";
 import { login, logout } from './Store/AuthSlice';
+import { Footer, Header } from './components/Index';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    authservice.getCurrentUser()
+    authService.getCurrentUser()
     .then((userData)=>{
       if(userData){
         dispatch(login({userData}))
@@ -21,7 +22,15 @@ function App() {
   },[])
   
   return !loading ? (
-    <div className=''></div>
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400 '>
+      <div className='w-full block'>
+        <Header/>
+        <main>
+
+        </main>
+        <Footer/>
+      </div>
+    </div>
   ): null
 }
 
