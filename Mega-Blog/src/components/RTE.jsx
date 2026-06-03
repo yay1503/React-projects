@@ -1,7 +1,7 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Editor } from '@tinymce/tinymce-react'
-import conf from '../conf/conf'
+import conf from '../conf/Conf'
 
 function RTE({ name, control, label, defaultValue = '' }) {
   return (
